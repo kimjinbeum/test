@@ -7,7 +7,7 @@ $(document).on("click","#orderBtn", function (){
         var dataSplit = $(this).val().split("|");
         console.log(dataSplit[2] - 1);
         if(dataSplit[2] - 1 == 0){
-            alert("품절 상품은 주문 할 수 없습니다....dfdf.sdfsdfsdf......");
+            alert("품절 상품은 주문 할 수 없습니다...sdfdsfsdf.dfdf.sdfsdfsdf......");
             return;
         }else{
             var productDto = {
