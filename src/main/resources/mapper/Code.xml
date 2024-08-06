@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pico.project.mapper.CodeMapper">
+
+    <select id="getCodeList" parameterType="string" resultType="com.pico.project.dto.CodeDto">
+        SELECT code_id,
+               code_nm
+        FROM com_mst
+        WHERE parent_code_id = #{codeId}
+    </select>
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pico.project.mapper.ProductMapper">
+    <select id="productDtoList" parameterType="com.pico.project.dto.UserSessionDto" resultType="com.pico.project.dto.ProductDto">
+        select pm.product_cd,
+               pm.product_nm,
+               pm.product_amt,
+               ps.product_qty
+        from product_mst pm
+        left outer join product_stock ps on pm.product_cd  = ps.product_cd
+        where ((pm.purchase_age <![CDATA[>=]]> '18' and 18 <![CDATA[<=]]> #{age}) or (pm.purchase_age <![CDATA[<]]> '18' and 18 <![CDATA[>]]> #{age}))
+    </select>
+</mapper>

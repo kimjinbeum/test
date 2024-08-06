@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+<div class="wrapper">
+    <div class="join-container">
+        <table>
+            <tr>
+                <td class="label-cell">아이디</td>
+                <td class="input-cell">
+                    <input type="text" class="input checkField" id="userId" data-name="아이디">
+                    <button type="button" class="checkBtn">중복체크</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-cell">비밀번호</td>
+                <td class="input-cell">
+                    <input type="password" class="input checkField" id="userPwd" name="userPwd" placeholder="8글자 이상, 영문과 숫자 혼용"  data-name="비밀번호">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-cell">성명</td>
+                <td class="input-cell">
+                    <input type="text" class="input checkField" id="userNm" name="userNm"  data-name="성명">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-cell">생년월일</td>
+                <td class="input-cell">
+                    <input type="text" class="input checkField" id="userBirth" name="userBirth"  data-name="생년월일">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-cell">성별</td>
+                <td class="input-cell">
+                    <th:block th:each="gender, iterStat : ${genderList}">
+                    <input type="radio" th:id="${gender.codeId}" name="gender" th:value="${gender.codeId}" th:checked="${iterStat.index == 0}"/>
+                    <label th:for="${gender.codeId}" th:text="${gender.codeNm}"></label>
+                    </th:block>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-cell">이메일</td>
+                <td class="input-cell">
+                    <input type="text" class="inputArea checkField" id="userEmail">@
+                    <select name="email" id="selEmail" class="inputArea">
+                        <option value="">직접선택</option>
+                        <option th:each="email : ${emailList}"
+                                th:value="${email.codeNm}"
+                                th:text="${email.codeNm}">
+                        </option>
+                    </select>
+                    <input type="text" class="inputArea" id="userEmailAddr">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-cell">휴대폰번호</td>
+                <td class="input-cell">
+                    <select name="email" id="selPhone" class="inputArea">
+                        <option value="">직접입력</option>
+                        <option th:each="phone : ${phoneList}"
+                                th:value="${phone.codeId}"
+                                th:text="${phone.codeNm}">
+                        </option>
+                    </select>
+                    <input type="text" class="inputArea checkField" id="phone1" data-name="핸드폰번호">
+                    <input type="text" class="inputArea checkField" id="phone2" data-name="핸드폰번호">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-cell">광고수신동의</td>
+                <td class="input-cell">
+                    <th:block th:each="agree, iterStat : ${agreeList}">
+                        <input type="radio" th:id="${agree.codeId}" name="agree" th:value="${agree.codeId}" th:checked="${iterStat.index == 0}"/>
+                        <label th:for="${agree.codeId}" th:text="${agree.codeNm}"></label>
+                    </th:block>
+                </td>
+            </tr>
+        </table>
+
+        <div class="buttonArea">
+            <button type="button" id="userJoinBtn">완료</button>
+            <button type="button" id="backLogin">나가기</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/util/util.js"></script>
+<script src="/js/join/join.js"></script>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+<div class="wrapper">
+    <div class="container">
+        <div class="input-fields">
+            <h1>[[${userDto.userNm}]] 회원님 환영합니다</h1>
+            <h1>구매 금액별로 경품을 지급합니다</h1>
+            <div id="orderDiv">
+                <th:block th:each="product : ${productDtoList}">
+                    <div class="input-group">
+                        <input type="checkbox" class="checkBox" name="productCheck" th:value="${product.productCd + '|' + product.productAmt + '|' + product.productQty}">
+                        <h1 th:text="${product.productNm}"></h1>
+                        <h1 th:text="${#numbers.formatInteger(product.productAmt, 3, 'COMMA') + '원'}"></h1>
+                        <h1 th:text="${'(재고 : ' + product.productQty + ')'}"></h1>
+                    </div>
+                </th:block>
+            </div>
+            <div class="button-group">
+                <button type="button" id="orderBtn">선택주문</button>
+                <button type="button" id="orderDtailBtn">주문이력보기</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/main/main.js"></script>

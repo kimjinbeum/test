@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pico.project.mapper.OrderMapper">
+
+    <select id="insOrder" resultType="string">
+        WITH order_count AS (
+            SELECT COUNT(*) + 1 AS count
+        FROM ORDER_MST
+        WHERE TO_CHAR(order_dt, 'YYYYMMDD') = TO_CHAR(NOW(), 'YYYYMMDD')
+            )
+        INSERT INTO ORDER_MST (
+            order_no,
+            order_dt,
+            order_user_no,
+            reg_dt
+        )
+        VALUES (
+            CONCAT('OR',
+            TO_CHAR(NOW(), 'YYYYMMDD'),
+            LPAD(CAST((SELECT count FROM order_count) AS TEXT), 5, '0')
+            ),
+            now(),
+            #{userNo},
+            now()
+            )
+            RETURNING order_no;
+    </select>
+
+    <select id="getPrize" parameterType="com.pico.project.dto.PrizeDto" resultType="com.pico.project.dto.PrizeDto">
+        select *
+        from prize_mst pm
+        where ((18 <![CDATA[<=]]> #{age} and prize_amt_min <![CDATA[<=]]> #{prizeAmt} and  prize_amt_max <![CDATA[>=]]> #{prizeAmt}) or
+              (18 <![CDATA[>]]> #{age} and prize_amt_min <![CDATA[<=]]> #{prizeAmt} and  prize_amt_max <![CDATA[>=]]> #{prizeAmt}))
+        limit 1
+    </select>
+
+    <insert id="insOrderDetail" parameterType="com.pico.project.dto.OrderDto">
+        INSERT INTO order_detail
+            (
+             order_no,
+             product_cd,
+             product_amt,
+             prize_cd,
+             reg_dt
+            )
+        VALUES(
+               #{orderNo},
+               #{productCd},
+               #{productAmt},
+               #{prizeCd},
+               now()
+              );
+    </insert>
+
+    <update id="updateStock" parameterType="com.pico.project.dto.OrderDto">
+        update product_stock
+        set product_qty = product_qty - 1,
+            mod_dt = now()
+        where product_cd = #{productCd}
+    </update>
+
+    <insert id="insProductOut" parameterType="com.pico.project.dto.OrderDto">
+        WITH out_count AS (
+            SELECT COUNT(*) + 1 AS count
+        FROM product_out
+        WHERE TO_CHAR(out_dt, 'YYYYMMDD') = TO_CHAR(NOW(), 'YYYYMMDD')
+            )
+        INSERT INTO product_out (
+            out_no,
+            out_dt,
+            product_cd,
+            out_qty,
+            reg_dt
+        )
+        VALUES (
+            CONCAT('OUT',
+            TO_CHAR(NOW(), 'YYYYMMDD'),
+            LPAD(CAST((SELECT count FROM out_count) AS TEXT), 5, '0')
+            ),
+            now(),
+            #{productCd},
+            1,
+            now()
+            )
+    </insert>
+
+    <select id="orderList" parameterType="com.pico.project.dto.OrderDto" resultType="com.pico.project.dto.OrderDto">
+        select t1.order_no ,
+               to_char(t1.order_dt, 'yyyy-mm-dd hh24:mi:ss') as order_dt,
+               t2.product_nm,
+               t2.product_amt,
+               t2.prize_nm,
+               t1.order_user_no
+        from order_mst t1 , (select t1.order_no,
+                                    string_agg(t1.product_nm, ',') as product_nm,
+                                    sum(t1.product_amt) as product_amt,
+                                    max(t1.prize_nm) as prize_nm
+                             from
+                                 (select od.order_no, od.product_cd,pro.product_nm  ,od.product_amt , od.prize_cd, pri.prize_nm
+                                  from order_detail od
+                                           left outer join product_mst pro on od.product_cd = pro.product_cd
+                                           left outer join prize_mst pri on od.prize_cd = pri.prize_cd ) t1
+                             group by t1.order_no) as t2
+        where t1.order_no = t2.order_no
+          and t1.order_user_no = #{orderUserNo}
+        <if test="fromDt != null and fromDt != '' and toDt != null and toDt != ''">
+        and (to_char(t1.order_dt, 'yyyy-mm-dd') <![CDATA[>=]]> #{fromDt} and to_char(t1.order_dt, 'yyyy-mm-dd') <![CDATA[<=]]> #{toDt})
+        </if>
+        order by t1.order_dt desc
+        LIMIT #{pageSize} OFFSET #{offset}
+    </select>
+
+
+    <select id="orderCount" parameterType="com.pico.project.dto.OrderDto" resultType="int">
+        select count(t1.order_no) as count
+        from order_mst t1 , (select t1.order_no,
+        string_agg(t1.product_nm, ',') as product_nm,
+        sum(t1.product_amt) as product_amt,
+        max(t1.prize_nm) as prize_nm
+        from
+        (select od.order_no, od.product_cd,pro.product_nm  ,od.product_amt , od.prize_cd, pri.prize_nm
+        from order_detail od
+        left outer join product_mst pro on od.product_cd = pro.product_cd
+        left outer join prize_mst pri on od.prize_cd = pri.prize_cd ) t1
+        group by t1.order_no) as t2
+        where t1.order_no = t2.order_no
+          and t1.order_user_no = #{orderUserNo}
+        <if test="fromDt != null and fromDt != '' and toDt != null and toDt != ''">
+          and (to_char(t1.order_dt, 'yyyy-mm-dd') <![CDATA[>=]]> #{fromDt} and to_char(t1.order_dt, 'yyyy-mm-dd') <![CDATA[<=]]> #{toDt})
+        </if>
+    </select>
+</mapper>

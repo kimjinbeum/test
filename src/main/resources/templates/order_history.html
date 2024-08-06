@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+<div class="wrapper">
+    <div class="history-container">
+        <table>
+            <tr>
+                <td class="label-cell">주문일자</td>
+                <td class="input-cell">
+                    <input type="text" class="input checkField" id="fromDt" data-name="아이디" onkeypress="setDate(event)";>
+                    ~
+                    <input type="text" class="input checkField" id="toDt" data-name="아이디" onkeypress="setDate(event)";>
+                </td>
+            </tr>
+        </table>
+        <div class="buttonArea">
+            <button type="button" id="orderSearchBtn">조회</button>
+        </div>
+
+        <table class="dataList">
+            <thead>
+            <tr>
+                <th>주문일자</th>
+                <th>상품명</th>
+                <th>주문금액</th>
+                <th>경품</th>
+            </tr>
+            </thead>
+            <tbody class="orderList">
+            <th:block th:each="order : ${orderList}">
+                <tr>
+                    <td th:text="${order.orderDt}"></td>
+                    <td th:text="${order.productNm}"></td>
+                    <td th:text="${#numbers.formatInteger(order.productAmt, 3, 'COMMA')}"></td>
+                    <td th:text="${order.prizeNm}"></td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+
+        <div id="pagination" class="pagination"></div>
+    </div>
+</div>
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    var orderCount = [[${orderCount}]];
+</script>
+<script src="/js/util/pagination.js"></script>
+<script src="/js/util/util.js"></script>
+<script src="/js/main/history.js"></script>

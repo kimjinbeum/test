@@ -1,0 +1,44 @@
+2024-07-28 02:18:47 - Starting ProjectApplication using Java 17.0.11 with PID 11140 (E:\pro\project\build\classes\java\main started by blues in E:\pro\project)
+2024-07-28 02:18:47 - No active profile set, falling back to 1 default profile: "default"
+2024-07-28 02:18:48 - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2024-07-28 02:18:48 - Tomcat initialized with port 8080 (http)
+2024-07-28 02:18:48 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-07-28 02:18:48 - Starting service [Tomcat]
+2024-07-28 02:18:48 - Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-07-28 02:18:48 - Initializing Spring embedded WebApplicationContext
+2024-07-28 02:18:48 - Root WebApplicationContext: initialization completed in 673 ms
+2024-07-28 02:18:49 - Starting ProtocolHandler ["http-nio-8080"]
+2024-07-28 02:18:49 - Tomcat started on port 8080 (http) with context path '/'
+2024-07-28 02:18:49 - Started ProjectApplication in 1.473 seconds (process running for 1.913)
+2024-07-28 02:19:04 - Starting ProjectApplication using Java 17.0.11 with PID 41804 (E:\pro\project\build\classes\java\main started by blues in E:\pro\project)
+2024-07-28 02:19:04 - No active profile set, falling back to 1 default profile: "default"
+2024-07-28 02:19:04 - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2024-07-28 02:19:04 - Tomcat initialized with port 8080 (http)
+2024-07-28 02:19:04 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-07-28 02:19:04 - Starting service [Tomcat]
+2024-07-28 02:19:04 - Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-07-28 02:19:04 - Initializing Spring embedded WebApplicationContext
+2024-07-28 02:19:04 - Root WebApplicationContext: initialization completed in 666 ms
+2024-07-28 02:19:05 - Starting ProtocolHandler ["http-nio-8080"]
+2024-07-28 02:19:05 - Tomcat started on port 8080 (http) with context path '/'
+2024-07-28 02:19:05 - Started ProjectApplication in 1.471 seconds (process running for 1.91)
+2024-07-28 02:19:10 - Starting ProjectApplication using Java 17.0.11 with PID 41452 (E:\pro\project\build\classes\java\main started by blues in E:\pro\project)
+2024-07-28 02:19:10 - No active profile set, falling back to 1 default profile: "default"
+2024-07-28 02:19:11 - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2024-07-28 02:19:11 - Tomcat initialized with port 8080 (http)
+2024-07-28 02:19:11 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-07-28 02:19:11 - Starting service [Tomcat]
+2024-07-28 02:19:11 - Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-07-28 02:19:11 - Initializing Spring embedded WebApplicationContext
+2024-07-28 02:19:11 - Root WebApplicationContext: initialization completed in 723 ms
+2024-07-28 02:19:11 - Starting ProtocolHandler ["http-nio-8080"]
+2024-07-28 02:19:11 - Tomcat started on port 8080 (http) with context path '/'
+2024-07-28 02:19:11 - Started ProjectApplication in 1.611 seconds (process running for 2.086)
+2024-07-28 02:19:12 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-28 02:19:12 - Initializing Servlet 'dispatcherServlet'
+2024-07-28 02:19:12 - Completed initialization in 0 ms
+2024-07-28 02:19:28 - HikariPool-1 - Starting...
+2024-07-28 02:19:28 - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@722c935f
+2024-07-28 02:19:28 - HikariPool-1 - Start completed.
+2024-07-28 02:21:33 - HikariPool-1 - Shutdown initiated...
+2024-07-28 02:21:33 - HikariPool-1 - Shutdown completed.

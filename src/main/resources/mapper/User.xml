@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pico.project.mapper.UserMapper">
+
+    <select id="getUserCount" resultType="int" parameterType="com.pico.project.dto.UserDto">
+        select count(*)
+        from user_mst
+        where user_id = #{userId}
+         and user_pwd = #{userPwd}
+    </select>
+
+    <select id="getUser" resultType="com.pico.project.dto.UserDto" parameterType="com.pico.project.dto.UserDto">
+        select user_no,
+               user_id,
+               user_nm,
+               user_birth
+        from user_mst
+        where user_id = #{userId}
+          and user_pwd = #{userPwd}
+    </select>
+
+    <select id="getUserList" resultType="com.pico.project.dto.UserDto">
+        select *
+        from user_mst
+    </select>
+
+    <select id="userCheck" parameterType="string" resultType="int">
+        SELECT count(user_id)
+        FROM user_mst
+        WHERE user_id = #{userId}
+    </select>
+
+    <select id="insUser" parameterType="com.pico.project.dto.UserDto" resultType="string">
+        WITH user_count AS (
+            SELECT COUNT(*) + 1 AS count
+        FROM user_mst
+        WHERE TO_CHAR(reg_dt, 'YYYYMMDD') = TO_CHAR(NOW(), 'YYYYMMDD')
+            )
+        INSERT INTO user_mst (
+                              user_no,
+                              user_id,
+                              user_nm,
+                              user_pwd,
+                              user_gender,
+                              user_email,
+                              user_birth,
+                              user_phone,
+                              ad_receive_yn,
+                              reg_dt
+        )
+        VALUES (
+            CONCAT('PI',
+            TO_CHAR(NOW(), 'YYYYMMDD'),
+            LPAD(CAST((SELECT count FROM user_count) AS TEXT), 5, '0')
+            ),
+            #{userId},
+            #{userNm},
+            #{userPwd},
+            #{userGender},
+            #{userEmail},
+            #{userBirth},
+            #{userPhone},
+            #{adReceiveYn},
+            now()
+            )
+            RETURNING user_no;
+    </select>
+</mapper>
