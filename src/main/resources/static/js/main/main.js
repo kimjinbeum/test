@@ -9,6 +9,8 @@ $(document).on("click","#orderBtn", function (){
         if(dataSplit[2] - 1 == 0){
             alert("2222");
             alert("품절 상품은 주문 할 수 없습니다...sdfdsfsdf.dfdf.sdfsdfsdf......");
+            alert("품절 상품은 주문 할 수 없습니다.....sdfsdfsdfsdfsdfsdfsdfsdf......");
+            alert("품절 상품은 주문 할 수 없습니다.....sdfsdfsdfsdfsdfsdfsdfsdf......");
             return;
         }else{
             var productDto = {
