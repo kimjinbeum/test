@@ -11,6 +11,7 @@ $(document).on("click",".loginBtn", function (){
         success: function(data) {
             if(data.result == "error"){
                 alert("아이디 비번이 틀렸습니다.");
+                console.log("test");
             }else{
                 window.location.href = "/fr_main";
             }
