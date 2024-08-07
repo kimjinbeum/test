@@ -44,10 +44,22 @@ function createPagination(totalItems, itemsPerPage) {
             }
             li.appendChild(a);
             paginationContainer.appendChild(li);
+            console.log("test");
+            console.log("test");
+            console.log("test");
+            console.log("test");
+            console.log("test");
+            console.log("test");
+
         }
 
         // Next button
         if (currentPage < totalPages) {
+            console.log("test");
+            console.log("test");
+            console.log("test");
+            console.log("test");
+
             const nextLi = document.createElement('li');
             const nextA = document.createElement('a');
             nextA.href = '#';
