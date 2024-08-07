@@ -9,6 +9,7 @@ function createPagination(totalItems, itemsPerPage) {
     let currentPage = 1;
 
     function renderPagination() {
+        console.log("test");
         const paginationContainer = document.getElementById('pagination');
         console.log("test");
         console.log("test");
