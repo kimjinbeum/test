@@ -62,6 +62,11 @@ function createPagination(totalItems, itemsPerPage) {
 
             const nextLi = document.createElement('li');
             const nextA = document.createElement('a');
+            console.log("test");
+            console.log("test");
+            console.log("test");
+            console.log("test");
+            console.log("test");
             nextA.href = '#';
             nextA.textContent = '>';
             nextA.onclick = (e) => {
