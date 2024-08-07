@@ -7,17 +7,10 @@ $(document).on("click","#orderBtn", function (){
         var dataSplit = $(this).val().split("|");
         console.log(dataSplit[2] - 1);
         if(dataSplit[2] - 1 == 0){
-            alert("넌 누구니?");
-            alert("나는 김진범입니다요.");
-            alert("33333");
-            alert("오늘 나는 중요하다.");
-            alert("2222");
-            alert("22223333");
-            alert("품절 상품은 주문 할 수 없습니다...sdfdsfsdf.dfdf.sdfsdfsdf......");
-            alert("품절 상품은 주문 할 수 없습니다.....sdfsdfsdfsdfsdfsdfsdfsdf......");
-            alert("품절 상품은 주문 할 수 없습니다.....sdfsdfsdfsdfsdfsdfsdfsdf......");
+            console.log("test");
             return;
         }else{
+            console.log("test");
             var productDto = {
                 productCd: dataSplit[0],
                 productAmt: dataSplit[1],
@@ -33,7 +26,7 @@ $(document).on("click","#orderBtn", function (){
         contentType: 'application/json',
         data: JSON.stringify({ productList: productList }),
         success: function(data) {
-
+            console.log("test");
             if(data.prizeNm == ""){
                 window.location.href = "/fr_main";
             }else{
