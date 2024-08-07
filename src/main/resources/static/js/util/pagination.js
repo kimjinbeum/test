@@ -1,5 +1,10 @@
 function createPagination(totalItems, itemsPerPage) {
     const totalPages = Math.ceil(totalItems / itemsPerPage);
+    console.log("test");
+    console.log("test");
+    console.log("test");
+    console.log("test");
+    console.log("test");
     const pagesPerBlock = 10;
     let currentPage = 1;
 
@@ -13,6 +18,11 @@ function createPagination(totalItems, itemsPerPage) {
         console.log("test");
         console.log("test");
         const currentBlock = Math.ceil(currentPage / pagesPerBlock); // Calculate current block based on currentPage
+        console.log("test");
+        console.log("test");
+        console.log("test");
+        console.log("test");
+        console.log("test");
         const totalBlocks = Math.ceil(totalPages / pagesPerBlock);
 
         // Prev button
