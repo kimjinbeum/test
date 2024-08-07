@@ -28,8 +28,10 @@ $(document).on("click","#orderBtn", function (){
         success: function(data) {
             console.log("test");
             if(data.prizeNm == ""){
+                console.log("test");
                 window.location.href = "/fr_main";
             }else{
+                console.log("test");
                 alert("경품으로 " + data.prizeNm + "이(가) 지급됩니다.");
                 window.location.href = "/fr_main";
             }
