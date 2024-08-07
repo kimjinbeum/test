@@ -6,12 +6,23 @@ function createPagination(totalItems, itemsPerPage) {
     function renderPagination() {
         const paginationContainer = document.getElementById('pagination');
         paginationContainer.innerHTML = ''; // Clear existing pagination
-
+        console.log("test");
+        console.log("test");
+        console.log("test");
+        console.log("test");
+        console.log("test");
+        console.log("test");
         const currentBlock = Math.ceil(currentPage / pagesPerBlock); // Calculate current block based on currentPage
         const totalBlocks = Math.ceil(totalPages / pagesPerBlock);
 
         // Prev button
         if (currentPage > 1) {
+            console.log("test");
+            console.log("test");
+            console.log("test");
+            console.log("test");
+            console.log("test");
+            console.log("test");
             const prevLi = document.createElement('li');
             const prevA = document.createElement('a');
             prevA.href = '#';
@@ -23,10 +34,22 @@ function createPagination(totalItems, itemsPerPage) {
             };
             prevLi.appendChild(prevA);
             paginationContainer.appendChild(prevLi);
+            console.log("test");
+            console.log("test");
+            console.log("test");
+            console.log("test");
+            console.log("test");
+            console.log("test");
         }
 
         // Page numbers
         const startPage = (currentBlock - 1) * pagesPerBlock + 1;
+        console.log("test");
+        console.log("test");
+        console.log("test");
+        console.log("test");
+        console.log("test");
+        console.log("test");
         const endPage = Math.min(currentBlock * pagesPerBlock, totalPages);
 
         for (let i = startPage; i <= endPage; i++) {
