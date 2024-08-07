@@ -14,6 +14,7 @@ function createPagination(totalItems, itemsPerPage) {
         console.log("test");
         console.log("test");
         console.log("test");
+        console.log("test");
         paginationContainer.innerHTML = ''; // Clear existing pagination
         console.log("test");
         console.log("test");
