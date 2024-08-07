@@ -14,6 +14,9 @@ $(document).on("click",".loginBtn", function (){
                 console.log("test");
             }else{
                 window.location.href = "/fr_main";
+
+
+                console.log("test");
             }
         }
     });
