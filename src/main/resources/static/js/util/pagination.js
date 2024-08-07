@@ -10,6 +10,10 @@ function createPagination(totalItems, itemsPerPage) {
 
     function renderPagination() {
         const paginationContainer = document.getElementById('pagination');
+        console.log("test");
+        console.log("test");
+        console.log("test");
+        console.log("test");
         paginationContainer.innerHTML = ''; // Clear existing pagination
         console.log("test");
         console.log("test");
