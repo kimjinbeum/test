@@ -30,6 +30,7 @@ $(document).on("click","#orderBtn", function (){
             if(data.prizeNm == ""){
                 window.location.href = "/fr_main";
             }else{
+                alert("1123123");
                 alert("경품으로 " + data.prizeNm + "이(가) 지급됩니다.");
                 window.location.href = "/fr_main";
             }
