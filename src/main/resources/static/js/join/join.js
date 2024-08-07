@@ -78,5 +78,6 @@ $(document).on("change", "#selEmail", function (){
 });
 
 $(document).on("click", "#backLogin", function (){
+    console.log("test");
     window.location.href = "/login";
 });

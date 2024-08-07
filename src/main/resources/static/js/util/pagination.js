@@ -58,6 +58,7 @@ function createPagination(totalItems, itemsPerPage) {
                 goPage(currentPage);
             };
             nextLi.appendChild(nextA);
+            console.log("test");
             paginationContainer.appendChild(nextLi);
         }
     }

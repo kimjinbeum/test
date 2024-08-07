@@ -1,7 +1,7 @@
 
 
 function validatePassword(pwd){
-
+    console.log("test");
     var passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
     var resultYn = "";
 

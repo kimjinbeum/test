@@ -30,6 +30,7 @@ $(document).on("click","#orderBtn", function (){
             if(data.prizeNm == ""){
                 console.log("test");
                 window.location.href = "/fr_main";
+                console.log("test");
             }else{
                 alert("1123123");
                 console.log("test");
