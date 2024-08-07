@@ -7,7 +7,7 @@ $(document).on("click","#orderBtn", function (){
         var dataSplit = $(this).val().split("|");
         console.log(dataSplit[2] - 1);
         if(dataSplit[2] - 1 == 0){
-
+            alert("넌 누구니?");
             alert("나는 김진범입니다요.");
             alert("33333");
             alert("오늘 나는 중요하다.");
